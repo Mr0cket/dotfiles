@@ -20,6 +20,27 @@ cask "handbrake"
 cask "vagrant"
 cask "spotify"
 
+# user-prefs
+
+# Native-dev
+cask "android-studio"
+cask "react-native-debugger"
+cask "cocoapods"
+
+
+# dev formulae
+brew "httpie"
+brew "neovim"
+brew "watchman"
+
+# dev casks
+cask "discord"
+cask "postico"
+cask "postman"
+cask "stats"
+cask "sourcetree"
+
+
 # System
 brew "zsh-completions"
 brew "mas"
@@ -56,8 +77,8 @@ brew "dnstracer"
 brew "sslscan"
 
 # Ops
-brew "ansible"
-brew "hcloud"
+# brew "ansible"
+# brew "hcloud"
 
 # Images, Audio, Video
 brew "imagemagick"
@@ -74,7 +95,7 @@ brew "tig"
 brew "hub"
 
 # Extract rpm file content with rpm2cpio *.rpm | cpio -ivd
-brew "rpm2cpio"
+# brew "rpm2cpio"
 
 # JSON
 brew "jq"
@@ -92,10 +113,10 @@ brew "kind"
 brew "awscli"
 
 # GitLab Pages
-brew "hugo"
+# brew "hugo"
 
 # App Store
 mas "1Password 7", id: 1333542190
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
-mas "uBlock", id: 1385985095
+# mas "uBlock", id: 1385985095
