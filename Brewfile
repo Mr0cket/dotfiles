@@ -25,7 +25,7 @@ cask "spotify"
 # Native-dev
 cask "android-studio"
 cask "react-native-debugger"
-cask "cocoapods"
+cask "cocoapods" # may not be arm64 compatible
 
 
 # dev formulae
@@ -49,7 +49,7 @@ brew "wget"
 brew "git"
 brew "vim"
 brew "openssl"
-brew "coreutils"
+brew "coreutils" # (could interfere with c++ package compilation when using arm64 based mac)
 brew "moreutils"
 brew "findutils"
 brew "binutils"
