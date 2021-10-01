@@ -2,7 +2,7 @@
 
 cd ${0:a:h}
 
-git pull origin master
+git pull origin main
 
 function sync() {
 	rsync --exclude ".git/" \
@@ -12,6 +12,7 @@ function sync() {
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE" \
+		--exclude "update_repo.sh"
 		-avh --no-perms . ~;
 }
 
