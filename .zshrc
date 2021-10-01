@@ -82,7 +82,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-
 export EDITOR="code --wait"
 
 export LC_ALL=en_US.UTF-8
@@ -102,7 +101,7 @@ export LANG=en_US.UTF-8
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-#
+
 # Example aliases
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="cd ~/.oh-my-zsh"
@@ -121,3 +120,4 @@ alias ohmyzsh="cd ~/.oh-my-zsh"
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
+

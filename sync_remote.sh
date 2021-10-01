@@ -4,7 +4,7 @@ rsync \
   --existing \
   --stats \
   --no-implied-dirs \
-  ~ .
+  ~/ .
 
 git add .
 
