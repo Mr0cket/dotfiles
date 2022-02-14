@@ -1,3 +1,6 @@
+# Set working directory
+cd $HOME/.dotfiles
+
 # merge files that exist in dotfiles repo dir with latest versions
 rsync \
   -avh \
@@ -7,13 +10,15 @@ rsync \
   $HOME/ .
 
 # update brew file with currently installed software
-brew bundle dump --file $HOME/.dotfiles/Brewfile-local
+brew bundle dump --file Brewfile-local
 
 # Merge locally dumped Brewfile with remote
-sort -m $HOME/.dotfiles/Brewfile $HOME/.dotfiles/Brewfile-local | awk '/^\s*?$/||!seen[$0]++' > Brewfile
+# (this is a bit of a hack, but works)
+sort -m Brewfile Brewfile-local | awk '/^\s*?$/||!seen[$0]++' >  Brewfile_tmp
 
-# Delete local Brewfile
-rm $HOME/.dotfiles/Brewfile-local
+# Replace remote with merged file and remove temp files
+mv  Brewfile_tmp Brewfile
+rm Brewfile-local Brewfile_tmp
 
 git add .
-git commit -m "Sync local configs to remote";
+# git commit -m "Sync local configs to remote";
