@@ -7,6 +7,8 @@ rsync \
   --existing \
   --stats \
   --no-implied-dirs \
+  --no-perms \
+  --ignore-errors \
   $HOME/ .
 
 # update brew file with currently installed software
@@ -17,8 +19,8 @@ brew bundle dump --file Brewfile-local
 sort -m Brewfile Brewfile-local | awk '/^\s*?$/||!seen[$0]++' >  Brewfile_tmp
 
 # Replace remote with merged file and remove temp files
-mv  Brewfile_tmp Brewfile
-rm Brewfile-local Brewfile_tmp
+mv Brewfile_tmp Brewfile
+rm Brewfile-local
 
 git add .
-# git commit -m "Sync local configs to remote";
+git commit -m "Sync local dotfiles to remote";

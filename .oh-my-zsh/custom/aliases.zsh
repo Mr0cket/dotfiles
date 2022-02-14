@@ -15,4 +15,4 @@ alias cwd='pwd | pbcopy'
 alias adbrs='adb kill-server && adb start-server'
 
 # Start Fastlane
-alias fastlane="bundle exec fastlane'
+alias fastlane='bundle exec fastlane'
