@@ -13,3 +13,6 @@ alias cwd='pwd | pbcopy'
 
 # restart adb server
 alias adbrs='adb kill-server && adb start-server'
+
+# Start Fastlane
+alias fastlane="bundle exec fastlane'
