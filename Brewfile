@@ -9,21 +9,20 @@ tap "homebrew/core"
 tap "homebrew/services"
 
 cask "java"
-cask "visual-studio-code"
-cask "firefox"
-cask "vlc"
-cask "wireshark"
-cask "gimp"
-cask "inkscape"
-cask "jitsi-meet"
-cask "handbrake"
+cask "visual-studio-code", args: { appdir: "/Applications" }
+cask "firefox", args: { appdir: "/Applications" }
+cask "vlc", args: { appdir: "/Applications" }
+cask "discord", args: { appdir: "/Applications" }
 cask "vagrant"
 cask "spotify"
+cask "whatsapp"
+cask "spotify", args: { appdir: "/Applications" }
+cask "1password"
 
 # user-prefs
 
 # Native-dev
-cask "android-studio"
+cask "android-studio", args: { appdir: "/Applications" }
 cask "react-native-debugger"
 cask "cocoapods" # may not be arm64 compatible
 
@@ -34,19 +33,16 @@ brew "neovim"
 brew "watchman"
 
 # dev casks
+# cask "postico"
 cask "discord"
-cask "postico"
-cask "postman"
-cask "stats"
-cask "sourcetree"
-
+cask "postman", args: { appdir: "/Applications" }
+cask "stats", args: { appdir: "/Applications" }
 
 # System
 brew "zsh-completions"
 brew "mas"
 brew "curl"
 brew "wget"
-brew "git"
 brew "vim"
 brew "openssl"
 brew "coreutils" # (could interfere with c++ package compilation when using arm64 based mac)
@@ -76,9 +72,17 @@ brew "rlwrap"
 brew "dnstracer"
 brew "sslscan"
 
+# Git
+brew "git"
+brew "git-lfs"
+brew "gh"
+brew "tig"
+cask "sourcetree", args: { appdir: "/Applications" }
+
 # Ops
-# brew "ansible"
-# brew "hcloud"
+brew "docker"
+brew "docker-compose"
+brew "awscli"
 
 # Images, Audio, Video
 brew "imagemagick"
@@ -89,10 +93,6 @@ brew "ffmpeg"
 # Archive & Git
 brew "xz"
 brew "p7zip"
-brew "git"
-brew "git-lfs"
-brew "tig"
-brew "hub"
 
 # Extract rpm file content with rpm2cpio *.rpm | cpio -ivd
 # brew "rpm2cpio"
@@ -102,6 +102,7 @@ brew "jq"
 brew "jo"
 
 # Dev
+brew "python@3.9"
 brew "ruby"
 brew "yarn"
 brew "rbenv"
@@ -111,12 +112,36 @@ brew "cmake"
 brew "openjdk"
 brew "kind"
 brew "awscli"
+brew "deno"
 
-# GitLab Pages
-# brew "hugo"
+# RN dev
+cask "react-native-debugger", args: { appdir: "/Applications" }
+cask "zeplin"
+
+cask "raspberry-pi-imager"
 
 # App Store
 mas "1Password 7", id: 1333542190
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
-# mas "uBlock", id: 1385985095
+mas "Xcode", id: 497799835
+mas "Disk Space Analyzer Free", id: 446243721
+
+# apple bloatware :P
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+
+# Uncategorised
+brew "glib"
+brew "openldap"
+brew "guile"
+brew "gobject-introspection"
+brew "harfbuzz"
+brew "libass"
+brew "ldns"
+brew "libfido2"
+brew "perl"
+brew "ruby-build"
