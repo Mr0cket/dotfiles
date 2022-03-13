@@ -121,3 +121,16 @@ alias ohmyzsh="cd ~/.oh-my-zsh"
 # unset __conda_setup
 # # <<< conda initialize <<<
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for slss package
+# uninstall by removing these lines or running `tabtab uninstall slss`
+[[ -f /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true

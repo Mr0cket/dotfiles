@@ -126,14 +126,14 @@ mas "Telegram", id: 747648890
 mas "Xcode", id: 497799835
 mas "Disk Space Analyzer Free", id: 446243721
 
-# apple bloatware :P
+# Necessary apple bloatware :P
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 
-# Uncategorised
+# Deps
 brew "glib"
 brew "openldap"
 brew "guile"
@@ -144,4 +144,9 @@ brew "ldns"
 brew "libfido2"
 brew "perl"
 brew "ruby-build"
+
+# Uncategorised
 brew "wireshark"
+brew "wimlib"
+cask "sketch"
+cask "wireshark"

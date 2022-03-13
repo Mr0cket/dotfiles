@@ -16,3 +16,6 @@ alias adbrs='adb kill-server && adb start-server'
 
 # Start Fastlane
 alias fastlane='bundle exec fastlane'
+
+# Start Google Chrome
+alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
