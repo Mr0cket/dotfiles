@@ -37,6 +37,7 @@ brew "watchman"
 cask "discord"
 cask "postman", args: { appdir: "/Applications" }
 cask "stats", args: { appdir: "/Applications" }
+cask "wireshark"
 
 # System
 brew "zsh-completions"
@@ -120,7 +121,6 @@ cask "zeplin"
 cask "raspberry-pi-imager"
 
 # App Store
-mas "1Password 7", id: 1333542190
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
 mas "Xcode", id: 497799835
@@ -146,7 +146,5 @@ brew "perl"
 brew "ruby-build"
 
 # Uncategorised
-brew "wireshark"
 brew "wimlib"
 cask "sketch"
-cask "wireshark"
