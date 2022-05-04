@@ -30,9 +30,9 @@ xcode-select --install
 Note: I keep this disabled for improved security, though some sessions may require heavy sudo usage.
 
 ```
-sudo vim /private/etc/sudoers.d/mfriedrich
+sudo vim /private/etc/sudoers.d/milly
 
-#mfriedrich  ALL=(ALL) NOPASSWD: ALL
+#milly  ALL=(ALL) NOPASSWD: ALL
 ```
 
 ### Backup
@@ -41,7 +41,6 @@ Copy the following files in your home directory:
 
 * SSH Keys
 * GPG Keys
-* GitHub/GitLab Tokens in `.env`
 * Custom settings for OhMyZSH
 
 ```
@@ -57,7 +56,7 @@ cp -r .ssh .gnupg .env .oh-my-zsh $HOME/
 ### Dot files
 
 ```
-git clone https://gitlab.com/dnsmichi/dotfiles.git
+git clone https://gitlab.com/Mr0cket/dotfiles.git
 cd dotfiles
 ```
 
