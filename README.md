@@ -1,4 +1,4 @@
-# Macbook Pro dotfiles and setup at GitLab
+# Macbook Pro dotfiles and setup
 
 This repository contains everything to bootstrap my Macbook Pro (m1 ). This setup is explained in-depth in [dotfiles - Document and automate your Macbook setup](https://about.gitlab.com/blog/2020/04/17/dotfiles-document-and-automate-your-macbook-setup/).
 
