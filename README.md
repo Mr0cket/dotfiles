@@ -48,6 +48,12 @@ cd backup/
 cp -r .ssh .gnupg .env .oh-my-zsh $HOME/
 ```
 
+Sync most changes in your local dotfiles to repo:
+
+```
+./sync_remote.sh
+```
+
 > **Note**:
 >
 > The `dotenv` plugin is enabled in OhMyZSH which automatically
