@@ -61,7 +61,7 @@ git clone https://gitlab.com/dnsmichi/dotfiles.git
 cd dotfiles
 ```
 
-Sync the files.
+Sync the files to local env
 
 ```
 ./bootstrap.sh
@@ -114,20 +114,6 @@ VirtualBox needs work with Kernel modules. I highly recommend to get a [Parallel
 ## Preferences
 
 These are manual settings as they require user awareness.
-
-### FileVault
-
-Enable Encryption ([required for GitLab team members](https://about.gitlab.com/handbook/business-ops/team-member-enablement/onboarding-access-requests/#full-disk-encryption) and recommended for everyone).
-See [here](https://support.apple.com/en-us/HT204837) for detailed instructions.
-
-CLI:
-
-```
-sudo fdesetup status
-
-sudo fdesetup enable
-```
-
 
 ### Keyboard
 
