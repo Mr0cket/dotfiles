@@ -4,6 +4,3 @@
 #  for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do export PATH=$d:$PATH; done
 # fi
 
-# Add Android emulator to path
-PATH=$ANDROID_HOME/tools/emulator:$PATH;
-

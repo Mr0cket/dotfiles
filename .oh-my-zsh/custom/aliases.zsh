@@ -19,3 +19,16 @@ alias fastlane='bundle exec fastlane'
 
 # Start Google Chrome
 alias chrome='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome'
+
+# open brthrs projects
+alias bp='cd ~/brthrs/projects && ls'
+
+# download a subdir from gh (e.g check out an example project)
+alias git_clone_sub='() { ;}'
+
+# Open android studio (project) from commandline
+alias AndroidStudio="open -a /Applications/Android\ Studio.app"
+
+# Python 3 aliases
+alias python=python3
+alias pip=pip3
