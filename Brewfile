@@ -162,3 +162,4 @@ brew "mitmproxy"
 cask "dynobase"
 cask "fig"
 mas "WordMark", id: 1507080530
+mas "GoPro Player", id: 1460836908
