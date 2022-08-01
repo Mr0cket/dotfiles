@@ -19,6 +19,6 @@ function sync() {
 sync
 
 # install custom software
-bash ./custom_installations.sh
+# bash ./custom_installations.sh
 
 unset sync;
