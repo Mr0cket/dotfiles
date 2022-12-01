@@ -1,6 +1,8 @@
 cask_args appdir: "/Applications"
 
 # Tap Homebrew
+tap "env0/terratag"
+tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-fonts"
@@ -8,23 +10,21 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
-cask "java"
 cask "visual-studio-code", args: { appdir: "/Applications" }
-cask "firefox", args: { appdir: "/Applications" }
+# cask "firefox", args: { appdir: "/Applications" }
 cask "vlc", args: { appdir: "/Applications" }
 cask "discord", args: { appdir: "/Applications" }
-cask "vagrant"
+# cask "vagrant"
 cask "spotify"
 cask "whatsapp"
-cask "spotify", args: { appdir: "/Applications" }
-cask "1password"
+# cask "1password"
 
 # user-prefs
 
 # Native-dev
-cask "android-studio", args: { appdir: "/Applications" }
-cask "react-native-debugger"
-cask "cocoapods" # may not be arm64 compatible
+# cask "android-studio", args: { appdir: "/Applications" }
+# cask "react-native-debugger"
+# cask "cocoapods" # may not be arm64 compatible
 
 
 # dev formulae
@@ -34,7 +34,6 @@ brew "watchman"
 
 # dev casks
 # cask "postico"
-cask "discord"
 cask "postman", args: { appdir: "/Applications" }
 cask "stats", args: { appdir: "/Applications" }
 cask "wireshark"
@@ -83,7 +82,10 @@ cask "sourcetree", args: { appdir: "/Applications" }
 # Ops
 brew "docker"
 brew "docker-compose"
-brew "awscli"
+# brew "awscli"
+
+# Shell
+cask "fig"
 
 # Images, Audio, Video
 brew "imagemagick"
@@ -102,28 +104,39 @@ brew "p7zip"
 brew "jq"
 brew "jo"
 
+# DB
+cask "dynobase"
+
 # Dev
 brew "python@3.9"
+brew "python@3.10"
 brew "ruby"
 brew "yarn"
 brew "rbenv"
-brew "python"
 brew "go"
 brew "cmake"
 brew "openjdk"
 brew "kind"
 brew "deno"
 
+# 133t H4x
+brew "mitmproxy"
+
+
 # RN dev
 cask "react-native-debugger", args: { appdir: "/Applications" }
 cask "zeplin"
-
+brew "folly" # Natively supported debugger
 cask "raspberry-pi-imager"
+
+# Miscellaneous
+# brew "wimlib" # For formatting windows recovery USBs
+
 
 # App Store
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
-mas "Xcode", id: 497799835
+# mas "Xcode", id: 497799835
 mas "Disk Space Analyzer Free", id: 446243721
 
 # Necessary apple bloatware :P
@@ -146,20 +159,36 @@ brew "perl"
 brew "ruby-build"
 
 # Uncategorised
-brew "wimlib"
-cask "sketch"
 brew "cloc"
-brew "folly"
 brew "fizz"
 brew "wangle"
+
+brew "sqlite"
+brew "checkov"
+brew "coreutils"
+brew "folly"
+brew "fastjar"
 brew "fbthrift"
 brew "fb303"
+brew "srt"
+brew "gcalcli"
 brew "libheif"
+brew "hugo"
+brew "kubectx"
+brew "mtr"
+brew "openssl@3"
+brew "pre-commit"
+brew "python@3.11"
 brew "subversion"
-brew "git-svn"
-brew "python@3.10"
-brew "mitmproxy"
-cask "dynobase"
-cask "fig"
-mas "WordMark", id: 1507080530
-mas "GoPro Player", id: 1460836908
+brew "terraform-docs"
+brew "tfenv"
+brew "tflint"
+brew "tfsec"
+brew "env0/terratag/terratag"
+cask "dynobase", args: { appdir: "/Applications" }
+cask "fig", args: { appdir: "/Applications" }
+cask "raspberry-pi-imager", args: { appdir: "/Applications" }
+cask "spotify", args: { appdir: "/Applications" }
+cask "vagrant", args: { appdir: "/Applications" }
+cask "wireshark", args: { appdir: "/Applications" }
+cask "zeplin", args: { appdir: "/Applications" }

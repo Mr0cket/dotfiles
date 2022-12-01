@@ -46,6 +46,7 @@ set nofixeol
 let &guicursor = &guicursor . ",a:blinkon0"
 
 set background=dark
+colorscheme torte
 "set background=light
 
 set showcmd             " Show (partial) command in status line.

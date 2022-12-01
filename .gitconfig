@@ -1,6 +1,7 @@
 [user]
 	email = milo.silva234@gmail.com
 	name = Milo Silva
+	signingKey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOdJ5jW7Y3LtudwssAibQ0uqbAZ6PrCELGpxmVLBkPos milo.silva@devoteam.com
 [init]
 	defaultBranch = main
 [alias]
@@ -32,3 +33,13 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+[include]
+    path = .git-personal.conf
+[includeIf "gitdir:$HOME/devoteam/"]
+    path = .git-devoteam.conf
+[core]
+    excludesfile = ~/.gitignore
+[gpg]
+	format = ssh
+[push]
+	autoSetupRemote = true
