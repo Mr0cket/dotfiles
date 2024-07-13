@@ -16,11 +16,11 @@ brew bundle dump --file Brewfile-local
 
 # Merge locally dumped Brewfile with remote
 # (this is a bit of a hack, but works)
-sort -m Brewfile Brewfile-local | awk '/^\s*?$/||!seen[$0]++' >  Brewfile_tmp
+sort -m Brewfile Brewfile-local | awk '/^\s*?$/||!seen[$0]++' >Brewfile_tmp
 
 # Replace remote with merged file and remove temp files
 mv Brewfile_tmp Brewfile
 rm Brewfile-local
 
 git add .
-git commit -m "Sync local dotfiles to remote";
+git commit -m "Sync local dotfiles to remote"

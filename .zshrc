@@ -7,11 +7,22 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+## Pyenv config
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
+# Source helm config
+# source "$HOME/.helm_zsh"
+
+## GOlang config
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/milly/.oh-my-zsh"
+
+export PATH="$HOME/bin:$PATH"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -78,16 +89,17 @@ ZSH_CUSTOM="${ZSH}/custom"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws)
+plugins=(git aws asdf)
+
 
 source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 # **User configuration**
 
-# Default GH configuration directory
-export GH_CONFIG_DIR=$HOME/.gh-devoteam
-export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_devoteam_ed25519 -o IdentitiesOnly=yes"
+# Default GH configuration directory (commented since settings should be configured through git)
+# export GH_CONFIG_DIR=$HOME/.gh-devoteam
+# export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_devoteam_ed25519 -o IdentitiesOnly=yes"
 
 # Locale environment stuff
 export LC_ALL=en_US.UTF-8
@@ -157,6 +169,13 @@ if [ -f '/Users/milly/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/mil
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /opt/homebrew/bin/terraform terraform
 complete -o nospace -C /opt/homebrew/bin/terraform tf
+
+# bun completions
+[ -s "/Users/milly/.bun/_bun" ] && source "/Users/milly/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Fig post block. Keep at the bottom of this file.
 [[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
