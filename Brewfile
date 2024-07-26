@@ -267,6 +267,7 @@ mas "Dashlane", id: 517914548
 mas "Todoist", id: 585829637
 mas "WhatsApp", id: 1147396723
 mas "WireGuard", id: 1451685025
+mas "‎WhatsApp", id: 310633997
 vscode "benjaminbenais.copilot-theme"
 vscode "bierner.github-markdown-preview"
 vscode "bierner.markdown-checkbox"
