@@ -7,6 +7,11 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-$USER.zsh" ]]; the
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-$USER.zsh"
 fi
 
+# Source .zshprofile if it exists
+if [ -f ~/.zshprofile ]; then
+  source ~/.zshprofile
+fi
+
 ## Pyenv config
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
@@ -22,12 +27,15 @@ export PATH="$GOPATH/bin:$PATH"
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/milly/.oh-my-zsh"
 
+# TheFuck
+eval $(thefuck --alias)
+
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="random"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
+# ZSH_THEME="random"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load

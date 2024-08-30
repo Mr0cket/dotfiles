@@ -26,7 +26,7 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # local bins
-export PATH=$PATH:$HOME/bin
+export PATH=$PATH:$HOME/.bin
 
 # apigeecli
 export PATH=$PATH:$HOME/.apigeecli/bin
