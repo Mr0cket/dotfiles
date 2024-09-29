@@ -107,6 +107,12 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # export GH_CONFIG_DIR=$HOME/.gh-devoteam
 # export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_devoteam_ed25519 -o IdentitiesOnly=yes"
 
+# Add ssh cert identities to ssh agent. Ignore public identity (.pub) files
+eval "$(ssh-agent -s >/dev/null 2>&1)"
+for identity in $(ls -1 $HOME/.ssh/id_* | grep -v '\.pub$'); do
+  ssh-add --apple-load-keychain $identity >/dev/null 2>&1
+done
+
 # Locale environment stuff
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8

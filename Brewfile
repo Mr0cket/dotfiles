@@ -268,6 +268,7 @@ mas "Todoist", id: 585829637
 mas "WhatsApp", id: 1147396723
 mas "WireGuard", id: 1451685025
 mas "‎WhatsApp", id: 310633997
+mas "TickTick", id: 966085870
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "apertia.vscode-aider"
 vscode "benjaminbenais.copilot-theme"
