@@ -268,6 +268,8 @@ mas "Todoist", id: 585829637
 mas "WhatsApp", id: 1147396723
 mas "WireGuard", id: 1451685025
 mas "‎WhatsApp", id: 310633997
+vscode "amazonwebservices.codewhisperer-for-command-line-companion"
+vscode "apertia.vscode-aider"
 vscode "benjaminbenais.copilot-theme"
 vscode "bierner.github-markdown-preview"
 vscode "bierner.markdown-checkbox"
@@ -289,6 +291,7 @@ vscode "hashicorp.terraform"
 vscode "huggingface.huggingface-vscode"
 vscode "mads-hartmann.bash-ide-vscode"
 vscode "mattiasbaake.vscode-snippets-for-ansible"
+vscode "mechatroner.rainbow-csv"
 vscode "mkhl.shfmt"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"

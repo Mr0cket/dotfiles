@@ -48,6 +48,13 @@ command_templates = {
             "content": "What is the GCP IAM role id for: \n\n{msg}",
         },
     ],
+    "synonym": [
+        {
+            "role": "system",
+            "content": "Answer only with a list of synonyms for the word or phrase entered.",
+        },
+        {"role": "user", "content": "What are common synonyms for: '{msg}'"},
+    ],
 }
 
 
@@ -89,7 +96,7 @@ if args.reset:
 
 # Create symlinks to all the commands in the $HOME/bin directory.
 if args.sync:
-    exec_dir = f'{os.environ["HOME"]}/bin'
+    exec_dir = os.path.join(os.environ["HOME"], '.bin')
     print(f'syncing commands to', exec_dir)
     for command_name in command_templates.keys():
         target = os.path.join(exec_dir, command_name)
@@ -97,7 +104,7 @@ if args.sync:
 
         if os.path.islink(target):
             os.unlink(target)
-        os.symlink(__file__, target)
+        os.symlink(os.path.abspath(__file__), target)
 
     # Warn if destination is not in current path:
     if exec_dir not in os.environ['PATH']:

@@ -30,3 +30,6 @@ export PATH=$PATH:$HOME/.bin
 
 # apigeecli
 export PATH=$PATH:$HOME/.apigeecli/bin
+
+# Anthropic
+export ANTHROPIC_API_KEY=$(cat ~/.anthropic_api_key)

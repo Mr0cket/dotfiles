@@ -133,7 +133,9 @@ alias gpit='gcloud auth print-identity-token' # Prints identity token
 alias gcbilling='gcloud beta billing accounts list'
 
 alias gcurl='curl -H "Authorization: Bearer $(gpat)"'
+
 alias gicurl='curl -H "Authorization: Bearer $(gpit)"'
+alias jigcurl='curl -H "Authorization: Bearer $(gpit)" -H "Content-type: application/json"'
 
 alias gc-bastion='() {
   if [[ -z "$1" || -z "$2" ]]; then
