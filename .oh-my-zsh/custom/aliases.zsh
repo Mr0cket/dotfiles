@@ -170,3 +170,7 @@ alias swagger='() {
 #    ffmpeg -i "$1" -vf "fps=10,scale=320:-1:flags=lanczos,drawtext=text='$3':fontcolor=white:borderw=2:bordercolor=black:fontsize=24:x=(w-text_w)/2:y=(h-text_h)-10" -c:v pam -f image2pipe - | convert -delay 10 - -loop 0 -layers optimize "$2"
 #  fi
 #}'
+
+# Network analysis tools
+scan_nw='nmap -sn'
+scannw='nmap -sn'

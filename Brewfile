@@ -269,6 +269,7 @@ mas "WhatsApp", id: 1147396723
 mas "WireGuard", id: 1451685025
 mas "‎WhatsApp", id: 310633997
 mas "TickTick", id: 966085870
+cask "openvpn-connect"
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "apertia.vscode-aider"
 vscode "benjaminbenais.copilot-theme"
@@ -288,6 +289,7 @@ vscode "esbenp.prettier-vscode"
 vscode "github.github-vscode-theme"
 vscode "golang.go"
 vscode "googlecloudtools.cloudcode"
+vscode "gruntfuggly.todo-tree"
 vscode "hashicorp.terraform"
 vscode "huggingface.huggingface-vscode"
 vscode "mads-hartmann.bash-ide-vscode"
@@ -315,6 +317,7 @@ vscode "ms-vscode-remote.remote-ssh"
 vscode "ms-vscode-remote.remote-ssh-edit"
 vscode "ms-vscode.remote-explorer"
 vscode "ms-vsliveshare.vsliveshare"
+vscode "oderwat.indent-rainbow"
 vscode "redhat.ansible"
 vscode "redhat.vscode-xml"
 vscode "redhat.vscode-yaml"
