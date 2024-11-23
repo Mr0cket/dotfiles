@@ -12,13 +12,16 @@ function sync() {
 		--exclude "bootstrap.sh" \
 		--exclude "README.md" \
 		--exclude "LICENSE" \
-		--exclude "update_repo.sh"
+		--exclude "update_repo.sh" \
+		--exclude "sync_remote.sh" \
+		--exclude "Brewfile" \
+		--exclude "brew_once.sh" \
 		-avh --no-perms . ~;
 }
 
 sync
 
 # install custom software
-# bash ./custom_installations.sh
+curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh | bash
 
 unset sync;

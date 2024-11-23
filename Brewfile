@@ -34,8 +34,6 @@ brew "neovim"
 brew "watchman"
 
 # dev casks
-# cask "postico"
-cask "postman", args: { appdir: "/Applications" }
 cask "stats", args: { appdir: "/Applications" }
 cask "wireshark"
 
@@ -86,7 +84,7 @@ brew "docker-compose"
 # brew "awscli"
 
 # Shell
-cask "fig"
+cask "amazon-q"
 
 # Images, Audio, Video
 brew "imagemagick"
@@ -109,8 +107,6 @@ brew "jo"
 cask "dynobase"
 
 # Dev
-brew "python@3.9"
-brew "python@3.10"
 brew "ruby"
 brew "yarn"
 brew "rbenv"
@@ -118,7 +114,6 @@ brew "go"
 brew "cmake"
 brew "openjdk"
 brew "kind"
-brew "deno"
 
 # 133t H4x
 brew "mitmproxy"
@@ -126,7 +121,6 @@ brew "mitmproxy"
 
 # RN dev
 cask "react-native-debugger", args: { appdir: "/Applications" }
-cask "zeplin"
 brew "folly" # Natively supported debugger
 cask "raspberry-pi-imager"
 
@@ -138,7 +132,6 @@ cask "raspberry-pi-imager"
 mas "Slack", id: 803453959
 mas "Telegram", id: 747648890
 # mas "Xcode", id: 497799835
-mas "Disk Space Analyzer Free", id: 446243721
 
 # Necessary apple bloatware :P
 mas "GarageBand", id: 682658836
@@ -172,27 +165,17 @@ brew "fastjar"
 brew "fbthrift"
 brew "fb303"
 brew "srt"
-brew "gcalcli"
 brew "libheif"
 brew "hugo"
 brew "kubectx"
 brew "mtr"
 brew "openssl@3"
 brew "pre-commit"
-brew "python@3.11"
 brew "subversion"
 brew "terraform-docs"
-brew "tfenv"
 brew "tflint"
 brew "tfsec"
 brew "env0/terratag/terratag"
-cask "dynobase", args: { appdir: "/Applications" }
-cask "fig", args: { appdir: "/Applications" }
-cask "raspberry-pi-imager", args: { appdir: "/Applications" }
-cask "spotify", args: { appdir: "/Applications" }
-cask "vagrant", args: { appdir: "/Applications" }
-cask "wireshark", args: { appdir: "/Applications" }
-cask "zeplin", args: { appdir: "/Applications" }
 tap "mach-composer/mach-composer"
 tap "messense/macos-cross-toolchains"
 tap "microsoft/mssql-release"
@@ -213,7 +196,6 @@ brew "blueutil"
 brew "boost"
 brew "openblas"
 brew "python-markdown", link: false
-brew "cowsay"
 brew "libssh2"
 brew "rtmpdump"
 brew "libevent"
@@ -227,7 +209,6 @@ brew "tesseract"
 brew "freetds"
 brew "ghostscript"
 brew "libraw"
-brew "openssl@1.1"
 brew "git-svn"
 brew "helm"
 brew "inetutils"
@@ -239,11 +220,9 @@ brew "protobuf"
 brew "mongosh"
 brew "mongodb-atlas-cli"
 brew "mysql"
-brew "node@16"
 brew "openjdk@11"
 brew "openapi-generator"
 brew "virtualenv"
-brew "pyenv"
 brew "ripgrep"
 brew "sqlcmd", link: false
 brew "tcl-tk"
@@ -252,24 +231,27 @@ brew "watch"
 brew "yq"
 brew "zbar"
 brew "buildpacks/tap/pack"
-brew "messense/macos-cross-toolchains/aarch64-unknown-linux-musl"
-brew "microsoft/mssql-release/mssql-tools18"
+
+
 cask "android-platform-tools"
 cask "cyberduck"
-cask "dbeaver-community"
 cask "gimp"
-cask "qbittorrent"
-cask "slack"
 cask "stremio"
 cask "vnc-viewer"
 cask "zoom"
+cask "dynobase", args: { appdir: "/Applications" }
+cask "fig", args: { appdir: "/Applications" }
+cask "raspberry-pi-imager", args: { appdir: "/Applications" }
+cask "spotify", args: { appdir: "/Applications" }
+
+
 mas "Dashlane", id: 517914548
 mas "Todoist", id: 585829637
 mas "WhatsApp", id: 1147396723
 mas "WireGuard", id: 1451685025
 mas "‎WhatsApp", id: 310633997
 mas "TickTick", id: 966085870
-cask "openvpn-connect"
+
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "apertia.vscode-aider"
 vscode "benjaminbenais.copilot-theme"
@@ -299,9 +281,6 @@ vscode "mkhl.shfmt"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
 vscode "ms-mssql.data-workspace-vscode"
-vscode "ms-mssql.mssql"
-vscode "ms-mssql.sql-bindings-vscode"
-vscode "ms-mssql.sql-database-projects-vscode"
 vscode "ms-python.black-formatter"
 vscode "ms-python.debugpy"
 vscode "ms-python.isort"
