@@ -8,7 +8,7 @@ alias v='vim'
 alias file_size='wc -c'
 alias dir_size='du -hs'
 alias jcurl='curl -H "Content-type: application/json"'
-alias base64d='echo "$1" | base64 -d'
+alias base64d='() {echo "$1" | base64 -d}'
 
 # SHA private key fingerprint
 alias fingerprint='ssh-keygen -lf'
@@ -29,7 +29,7 @@ alias gcom='git commit -m'
 alias genpw='LC_ALL=C tr -dc "[:alnum:]" < /dev/urandom | head -c 20 | pbcopy'
 
 # Check external ip address
-alias myip='curl ifconfig.co/'
+alias myip='curl -4 ifconfig.co/'
 
 # Emulate intel based arch
 alias podi='arch -arch x86_64 pod install'
@@ -63,20 +63,26 @@ alias py=python3
 alias venv='py -m venv'
 
 # docker
-alias docker-tags=''
+# alias docker-tags=''
 
 # Kubernetes
 alias k=kubectl
 alias kd='kubectl describe'
 alias kg='kubectl get'
 alias ke='kubectl explain'
+alias ka='kubectl apply'
 
 ### Get
 alias kgp='kubectl get pods'
 alias kgs='kubectl get services'
 alias kgn='kubectl get nodes'
-alias kgi='kubectl get ingress'
+alias kgi='kubectl get ingress --all-namespaces'
 alias kgd='kubectl get deployment'
+alias kgse='kubectl get secrets'
+alias kgsd='(){
+    kubectl get secret "$@" -o json |
+    jq -r '\''.data | to_entries[] | "\(.key)=\(.value | @base64d)"'\''
+}'
 
 ### describe
 alias kdp='kubectl describe pods'
@@ -84,6 +90,13 @@ alias kds='kubectl describe services'
 alias kdn='kubectl describe nodes'
 alias kdi='kubectl describe ingress'
 alias kdd='kubectl describe deployment'
+
+# Misc.
+alias merge_config='() { KUBECONFIG=~/.kube/config:$1 kubectl config view --flatten > ~/.kube/config_tmp; cp ~/.kube/config_tmp ~/.kube/config; rm ~/.kube/config_tmp; rm $1}'
+
+alias retry='() { while true; do $@; echo .; done }'
+
+alias kpf='() { retry kubectl port-forward $@ }'
 
 ### Argocd
 alias a=argocd
@@ -95,6 +108,10 @@ alias h='helm'
 alias kctx='kubectx'
 alias kgc='kubectl config get-clusters'
 alias ksproxy='kubectl config set clusters.$(kubectx -c).proxy-url http://localhost:8888'
+
+### Set default namespace
+alias ksns='kubectl config set-context --current --namespace'
+
 
 ### https://github.com/nicolaka/netshoot
 alias kssh='echo "starting netshoot pod in $(kubectx -c) cluster..." && kubectl run netshoot --rm -i --tty --image nicolaka/netshoot -- zsh'
@@ -174,3 +191,8 @@ alias swagger='() {
 # Network analysis tools
 scan_nw='nmap -sn'
 scannw='nmap -sn'
+
+alias h2l=howtolinux
+
+alias kanctl='() { docker run --rm --platform linux/amd64 -v ~/.kube:/root/.kube ghcr.io/kanisterio/kanister-tools:0.116.0 kanctl "$@"}'
+

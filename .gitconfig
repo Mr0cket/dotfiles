@@ -1,43 +1,20 @@
+# This is Git's per-user configuration file.
+[user]
+# Please adapt and uncomment the following lines:
+	name = Milo Silva
+	email = milo.silva@intus.nl
+
+[safe]
+	directory = /Users/milosilva/intus/platform/infra-dns
 [init]
 	defaultBranch = main
-[alias]
-	l  = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative --
 [core]
-	excludesfile = /Users/milly/.gitignore_global
-	editor = code --wait
-[commit]
-	template = /Users/milly/.stCommitMsg
-[credential]
-	helper = osxkeychain
-	[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[diff]
-	tool = default-difftool
-[difftool "default-difftool"]
-	cmd = code --wait --diff $LOCAL $REMOTE
-[merge]
-	tool = vscode
-[mergetool "vscode"]
-	cmd = code --wait $MERGED
-
+	excludesfile = /Users/milo.silva/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[include]
-    path = ~/.git-personal.conf
-[includeIf "gitdir:~/devoteam/"]
-	path = ~/.git-devoteam.conf
-[includeIf "gitdir:~/devoteam/active/hkm/"]
-	path = ~/.git-hunkemoller.conf
-[core]
-    excludesfile = ~/.gitignore
-[gpg]
-	format = ssh
 [push]
 	autoSetupRemote = true

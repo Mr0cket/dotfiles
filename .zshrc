@@ -1,5 +1,5 @@
-# Amazon Q pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.pre.zsh"
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -12,20 +12,25 @@ if [ -f ~/.zshprofile ]; then
   source ~/.zshprofile
 fi
 
-## Pyenv config
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [ -f "$HOME/.secrets" ]; then
+  source $HOME/.secrets
+fi
+
 
 # Source helm config
-# source "$HOME/.helm_zsh"
+if [ -f "$HOME/.helm_zsh" ]; then
+  source "$HOME/.helm_zsh"
+fi
+
+# ASDF
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 ## GOlang config
 export GOPATH="$HOME/go"
 export PATH="$GOPATH/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/milly/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # TheFuck
 eval $(thefuck --alias)
@@ -133,30 +138,15 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # All aliases should be set in "~/.oh-my-zsh/custom/aliases.zsh"
 
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# __conda_setup="$('/Users/milly/opt/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
-# if [ $? -eq 0 ]; then
-#     eval "$__conda_setup"
-# else
-#     if [ -f "/Users/milly/opt/anaconda3/etc/profile.d/conda.sh" ]; then
-#         . "/Users/milly/opt/anaconda3/etc/profile.d/conda.sh"
-#     else
-#         export PATH="/Users/milly/opt/anaconda3/bin:$PATH"
-#     fi
-# fi
-# unset __conda_setup
-# # <<< conda initialize <<<
-
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+[[ -f $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
 # tabtab source for sls package
 # uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+[[ -f $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
 # tabtab source for slss package
 # uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/milly/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
+[[ -f $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
@@ -164,21 +154,28 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/milly/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/milly/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/milly/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/milly/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Adds autocomplete to ZSH shell
 [[ $commands[kubectl] ]] && source <(kubectl completion zsh)
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /opt/homebrew/bin/terraform terraform
-complete -o nospace -C /opt/homebrew/bin/terraform tf
+complete -o nospace -C /Users/milosilva/.asdf/shims/terraform terraform
+complete -o nospace -C /Users/milosilva/.asdf/shims/terraform tf
 
 # bun completions
-[ -s "/Users/milly/.bun/_bun" ] && source "/Users/milly/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
-# Amazon Q post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/amazon-q/shell/zshrc.post.zsh"
+# Docker default
+export DOCKER_DEFAULT_PLATFORM=linux/amd64
+
+# Disable fork safety
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+
+# Buildpack completion
+[[ $commands[pack] ]] && . $(pack completion --shell zsh) # The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/milo.silva/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/milo.silva/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/milo.silva/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/milo.silva/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

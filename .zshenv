@@ -1,4 +1,6 @@
-. "$HOME/.cargo/env"
+if [ -d $"$HOME/.cargo" ]; then
+	. "$HOME/.cargo/env"
+fi
 
 export HOMEBREW_BUNDLE_FILE=$HOME/.dotfiles/Brewfile
 export PATH=$PATH:/Users/milly/Library/Python/3.11/bin
@@ -26,10 +28,12 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # local bins
-export PATH=$PATH:$HOME/.bin
+export PATH=$PATH:$HOME/bin
 
 # apigeecli
 export PATH=$PATH:$HOME/.apigeecli/bin
 
-# Anthropic
-export ANTHROPIC_API_KEY=$(cat ~/.anthropic_api_key)
+# Secrets
+if [ -d "$HOME/.secrets" ]; then
+	source "$HOME/.secrets"
+fi 
