@@ -1,3 +1,4 @@
+eval "$(~/.local/bin/agent shell-integration zsh)"
 # Kiro CLI pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -101,7 +102,7 @@ ZSH_CUSTOM="${ZSH}/custom"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws asdf)
+plugins=(git aws asdf gcloud)
 
 source $ZSH/oh-my-zsh.sh
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
@@ -165,7 +166,7 @@ complete -o nospace -C /Users/milosilva/.asdf/shims/terraform tf
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # Docker default
-export DOCKER_DEFAULT_PLATFORM=linux/amd64
+export DOCKER_DEFAULT_PLATFORM=linux/arm64
 
 # Disable fork safety
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
@@ -174,8 +175,11 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
 [[ $commands[pack] ]] && . $(pack completion --shell zsh) # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/milo.silva/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/milo.silva/Downloads/google-cloud-sdk/path.zsh.inc'; fi
 
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/milo.silva/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/milo.silva/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-
 # Kiro CLI post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/milo.silva/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/milo.silva/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/milo.silva/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/milo.silva/Downloads/google-cloud-sdk/completion.zsh.inc'; fi

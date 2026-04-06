@@ -5,7 +5,6 @@ from litellm import completion
 
 import os, sys, json
 import argparse
-import litellm
 
 system_msg = "Answer as simply and concisely as possible"
 Command = namedtuple('Command', ['system', 'message', 'keep_history'], defaults=['', '', False])
@@ -78,7 +77,7 @@ command_templates = {
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-m', '--model', type=str, default='anthropic/claude-haiku-4-5-20251001')
+parser.add_argument('-m', '--model', type=str, default='gemini/gemini-2.5-flash-lite')
 parser.add_argument('--sync', action='store_true', help='Synchronise the executable commands')
 parser.add_argument('-r', '--reset', action='store_true', help='Reset')
 parser.add_argument('-t', '--temperature', type=float, default=0.5)
@@ -91,16 +90,16 @@ HOME_PATH = os.environ['HOME']
 # defaults to os.environ.get("ANTHROPIC_API_KEY")
 
 def save_history(history):
-    with open(f"{HOME_PATH}/.claude_chat_history", "w") as f:
+    with open(f"{HOME_PATH}/.prompt_history.json", "w") as f:
         json.dump(history, f)
 
 
 def load_history():
     try:
-        with open(f"{HOME_PATH}/.claude_chat_history") as f:
+        with open(f"{HOME_PATH}/.prompt_history.json") as f:
             return json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):  # create the file
-        with open(f"{HOME_PATH}/.claude_chat_history", 'w+') as f:
+        with open(f"{HOME_PATH}/.prompt_history.json", 'w+') as f:
             f.write('{}')
         return {}
 
@@ -118,8 +117,8 @@ if args.sync:
     print(f'syncing commands to', exec_dir)
     for command_name in command_templates.keys():
         target = os.path.join(exec_dir, command_name)
+        
         # Remove previously symlinks incase the path to the prompts script has changed
-
         if os.path.islink(target):
             os.unlink(target)
 
@@ -167,8 +166,23 @@ response = completion(
 if len(response.choices) > 1:
     print('WARNING: multiple response messages detected...')
 
-print('[DEBUG] input_tokens:', response.usage.prompt_tokens)
-print('[DEBUG] output_tokens:', response.usage.completion_tokens)
+
+# attempt to get pricing info
+input_price, output_price = (0,0)
+try:
+    with open(f"{HOME_PATH}/.llm_pricing.json") as f:
+        pricing: object = json.load(f)
+    input_pricing = pricing.get(f"{args.model.replace('/', '.')}-v1:0")['input_cost_per_token']
+    output_pricing = pricing.get(f"{args.model.replace('/', '.')}-v1:0")['output_cost_per_token']
+
+    print('[DEBUG] input_tokens:', response.usage.prompt_tokens, f"${(response.usage.prompt_tokens * input_pricing):.5f}")
+    print('[DEBUG] output_tokens:', response.usage.completion_tokens, f"${(response.usage.completion_tokens * output_pricing):.5f}")
+except Exception:
+    pass
+
+
+
+
 
 response_message = response.choices[0].message['content'].strip()
 

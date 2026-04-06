@@ -30,6 +30,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # local bins
 export PATH=$PATH:$HOME/bin
 
+export PATH="/opt/homebrew/opt/postgresql@18/bin:$PATH"
+
 # apigeecli
 export PATH=$PATH:$HOME/.apigeecli/bin
 

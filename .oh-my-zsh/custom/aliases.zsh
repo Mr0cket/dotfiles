@@ -94,7 +94,8 @@ alias kdd='kubectl describe deployment'
 # Misc.
 alias merge_config='() { KUBECONFIG=~/.kube/config:$1 kubectl config view --flatten > ~/.kube/config_tmp; cp ~/.kube/config_tmp ~/.kube/config; rm ~/.kube/config_tmp; rm $1}'
 
-alias retry='() { while true; do $@; echo .; done }'
+alias retry='() { while true; do eval "$@"; echo retrying...; done }'
+alias refresh='() { while true; do eval "$@"; sleep 2; done }'
 
 alias kpf='() { retry kubectl port-forward $@ }'
 
@@ -176,8 +177,9 @@ alias swagger='() {
     if [[ -n "$1" ]]; then
         echo "Loading document $1"
         option="-e SWAGGER_FILE=$1"
+	volume="-v $1:/$1"
     fi
-    docker run --rm -p 666:8080 $option swaggerapi/swagger-editor:next-v5-unprivileged
+    docker run --rm -p 666:8080 $volume $option swaggerapi/swagger-editor:next-v5-unprivileged
 }'
 
 #alias mp42gif='() {
@@ -192,7 +194,7 @@ alias swagger='() {
 scan_nw='nmap -sn'
 scannw='nmap -sn'
 
-alias h2l=howtolinux
+mcd='() { mkdir $1 && cd $1'
 
 alias kanctl='() { docker run --rm --platform linux/amd64 -v ~/.kube:/root/.kube ghcr.io/kanisterio/kanister-tools:0.116.0 kanctl "$@"}'
 
