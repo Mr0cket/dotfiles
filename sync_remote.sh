@@ -9,7 +9,7 @@ rsync \
   --no-implied-dirs \
   --no-perms \
   --ignore-errors \
-  $HOME/ .
+  $HOME/ . 2&> /dev/null
 
 # update brew file with currently installed software
 brew bundle dump --file Brewfile-local

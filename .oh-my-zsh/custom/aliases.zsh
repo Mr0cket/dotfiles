@@ -91,11 +91,15 @@ alias kdn='kubectl describe nodes'
 alias kdi='kubectl describe ingress'
 alias kdd='kubectl describe deployment'
 
+# CNPG kubectl
+alias kpsql='kubectl cnpg psql -n cnpg-system '
+alias pg_status='kubectl cnpg status -n cnpg-sysyem '
+
 # Misc.
 alias merge_config='() { KUBECONFIG=~/.kube/config:$1 kubectl config view --flatten > ~/.kube/config_tmp; cp ~/.kube/config_tmp ~/.kube/config; rm ~/.kube/config_tmp; rm $1}'
 
 alias retry='() { while true; do eval "$@"; echo retrying...; done }'
-alias refresh='() { while true; do eval "$@"; sleep 2; done }'
+alias refresh='() { while true; do eval "$@"; sleep 2; clear; done }'
 
 alias kpf='() { retry kubectl port-forward $@ }'
 

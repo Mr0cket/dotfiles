@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from collections import namedtuple
-from litellm import completion
+from litellm import completion, ModelResponse
 
 import os, sys, json
 import argparse
@@ -25,6 +25,13 @@ command_templates = {
             "content": "What is the kubernetes command line command to {msg}",
         },
     ),
+    "howtopsql": Command(
+        system="Answer with only the actual command without intro or explanation.",
+        message={
+            "role": "user",
+            "content": "What is the postgres sql command to {msg}",
+        },
+    ),
     "howtolinux": Command(
         system="Answer with only the actual command without intro or explanation.",
         message={
@@ -42,6 +49,13 @@ command_templates = {
     ),
     "reword": Command(
         system='Rewrite the following message in a friendly casual way. Only rewrite the message. do not respond',
+        message={
+            "role": "user",
+            "content": "{msg}",
+        },
+    ),
+    "rewordFormal": Command(
+        system='Rewrite the following message in a simple, semi professional way. Only rewrite the message. do not respond',
         message={
             "role": "user",
             "content": "{msg}",
@@ -89,6 +103,7 @@ HOME_PATH = os.environ['HOME']
 
 # defaults to os.environ.get("ANTHROPIC_API_KEY")
 
+
 def save_history(history):
     with open(f"{HOME_PATH}/.prompt_history.json", "w") as f:
         json.dump(history, f)
@@ -117,7 +132,7 @@ if args.sync:
     print(f'syncing commands to', exec_dir)
     for command_name in command_templates.keys():
         target = os.path.join(exec_dir, command_name)
-        
+
         # Remove previously symlinks incase the path to the prompts script has changed
         if os.path.islink(target):
             os.unlink(target)
@@ -150,38 +165,43 @@ conv = CHAT_HISTORY.get(cmd_name)
 system_msg = cmd.system
 if not conv:
     prompt = cmd.message
-    prompt['content'] = prompt['content'].format(msg=msg)
+    prompt['content'] = system_msg + "\n\n" + prompt['content'].format(msg=msg)
     conv = [prompt]
 else:
     conv.append({"role": "user", "content": msg})
 
 response = completion(
     model=args.model,
-    system=system_msg,
+    # system=system_msg,
     messages=conv,
     temperature=args.temperature,
-    max_tokens=1024,
+    max_tokens=4096,
 )
+
+assert type(response) == ModelResponse
 
 if len(response.choices) > 1:
     print('WARNING: multiple response messages detected...')
 
 
 # attempt to get pricing info
-input_price, output_price = (0,0)
+input_price, output_price = (0, 0)
 try:
     with open(f"{HOME_PATH}/.llm_pricing.json") as f:
-        pricing: object = json.load(f)
+        pricing = json.load(f)
     input_pricing = pricing.get(f"{args.model.replace('/', '.')}-v1:0")['input_cost_per_token']
     output_pricing = pricing.get(f"{args.model.replace('/', '.')}-v1:0")['output_cost_per_token']
 
-    print('[DEBUG] input_tokens:', response.usage.prompt_tokens, f"${(response.usage.prompt_tokens * input_pricing):.5f}")
-    print('[DEBUG] output_tokens:', response.usage.completion_tokens, f"${(response.usage.completion_tokens * output_pricing):.5f}")
+    print(
+        '[DEBUG] input_tokens:', response.usage.prompt_tokens, f"${(response.usage.prompt_tokens * input_pricing):.5f}"
+    )
+    print(
+        '[DEBUG] output_tokens:',
+        response.usage.completion_tokens,
+        f"${(response.usage.completion_tokens * output_pricing):.5f}",
+    )
 except Exception:
     pass
-
-
-
 
 
 response_message = response.choices[0].message['content'].strip()

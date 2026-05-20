@@ -38,4 +38,8 @@ export PATH=$PATH:$HOME/.apigeecli/bin
 # Secrets
 if [ -d "$HOME/.secrets" ]; then
 	source "$HOME/.secrets"
-fi 
+fi
+
+# export XDG_DATA_HOME="$HOME/.xdg"
+
+export K9S_CONFIG_DIR="$HOME/.k9s"
