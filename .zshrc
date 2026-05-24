@@ -12,11 +12,6 @@ if [ -f ~/.zshprofile ]; then
 	source ~/.zshprofile
 fi
 
-# Source helm config
-if [ -f "$HOME/.helm_zsh" ]; then
-	source "$HOME/.helm_zsh"
-fi
-
 # ASDF
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
@@ -63,7 +58,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Default GH configuration directory (commented since settings should be configured through git)
 # export GH_CONFIG_DIR=$HOME/.gh-devoteam
-export GIT_SSH_COMMAND="ssh -o IdentitiesOnly=yes"
+# export GIT_SSH_COMMAND="ssh -o IdentitiesOnly=yes -i KEY_PATH" # Forces ssh to use the key specified instead.
 
 # Add ssh cert identities to ssh agent. Ignore public identity (.pub) files
 eval "$(ssh-agent -s >/dev/null 2>&1)"
