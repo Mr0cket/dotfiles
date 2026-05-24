@@ -1,0 +1,4 @@
+python 3.13.5
+terraform 1.12.2
+global python 3.13.5
+golang 1.25.3
