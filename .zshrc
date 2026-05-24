@@ -4,22 +4,17 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-$USER.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-$USER.zsh"
+	source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-$USER.zsh"
 fi
 
 # Source .zshprofile if it exists
 if [ -f ~/.zshprofile ]; then
-  source ~/.zshprofile
+	source ~/.zshprofile
 fi
-
-if [ -f "$HOME/.secrets" ]; then
-  source $HOME/.secrets
-fi
-
 
 # Source helm config
 if [ -f "$HOME/.helm_zsh" ]; then
-  source "$HOME/.helm_zsh"
+	source "$HOME/.helm_zsh"
 fi
 
 # ASDF
@@ -48,55 +43,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # If set to an empty array, this variable will have no effect.
 ZSH_THEME_RANDOM_CANDIDATES=("robbyrussell" "agnoster")
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
-# See https://github.com/ohmyzsh/ohmyzsh/issues/5765
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
 
 ZSH_CUSTOM="${ZSH}/custom"
 
-# Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -110,23 +63,23 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 # Default GH configuration directory (commented since settings should be configured through git)
 # export GH_CONFIG_DIR=$HOME/.gh-devoteam
-# export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/id_devoteam_ed25519 -o IdentitiesOnly=yes"
+export GIT_SSH_COMMAND="ssh -o IdentitiesOnly=yes"
 
 # Add ssh cert identities to ssh agent. Ignore public identity (.pub) files
 eval "$(ssh-agent -s >/dev/null 2>&1)"
 for identity in $(ls -1 $HOME/.ssh/id_* | grep -v '\.pub$'); do
-  ssh-add --apple-load-keychain $identity >/dev/null 2>&1
+	/usr/bin/ssh-add --apple-load-keychain $identity >/dev/null 2>&1
 done
 
 # Locale environment stuff
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
+export EDITOR='micro'
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+	export EDITOR='vim'
 else
-  export EDITOR="code --wait"
+	export VISUAL="code --wait"
 fi
 
 ## Gcloud/provider config
@@ -137,19 +90,6 @@ export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # All aliases should be set in "~/.oh-my-zsh/custom/aliases.zsh"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . $HOME/.nvm/versions/node/v12.22.6/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -8,7 +8,9 @@ alias v='vim'
 alias file_size='wc -c'
 alias dir_size='du -hs'
 alias jcurl='curl -H "Content-type: application/json"'
-alias base64d='() {echo "$1" | base64 -d}'
+alias base64d='echo "$1" | base64 -d'
+alias mcd='if [[ ! -d "$1" ]]; then exec mkdir -p "$1"; fi; echo "$1"'
+alias vpnm='vpn_manager'
 
 # SHA private key fingerprint
 alias fingerprint='ssh-keygen -lf'
@@ -71,6 +73,7 @@ alias kd='kubectl describe'
 alias kg='kubectl get'
 alias ke='kubectl explain'
 alias ka='kubectl apply'
+alias klg='kubectl logs'
 
 ### Get
 alias kgp='kubectl get pods'
@@ -117,7 +120,6 @@ alias ksproxy='kubectl config set clusters.$(kubectx -c).proxy-url http://localh
 ### Set default namespace
 alias ksns='kubectl config set-context --current --namespace'
 
-
 ### https://github.com/nicolaka/netshoot
 alias kssh='echo "starting netshoot pod in $(kubectx -c) cluster..." && kubectl run netshoot --rm -i --tty --image nicolaka/netshoot -- zsh'
 alias kdbg='kubectl debug $1 -it --image=nicolaka/netshoot'
@@ -129,6 +131,7 @@ alias tf=terraform
 alias tfi='terraform init'
 alias tfp='terraform plan'
 alias tfa='terraform apply'
+alias tfs='terraform show'
 
 # Format & read piped json output
 alias jql="jq -C | less -R"
@@ -201,4 +204,3 @@ scannw='nmap -sn'
 mcd='() { mkdir $1 && cd $1'
 
 alias kanctl='() { docker run --rm --platform linux/amd64 -v ~/.kube:/root/.kube ghcr.io/kanisterio/kanister-tools:0.116.0 kanctl "$@"}'
-
