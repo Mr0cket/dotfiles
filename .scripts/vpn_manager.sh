@@ -174,7 +174,7 @@ function create_droplet() {
 
 	while [[ $attempt -le $max_attempts ]]; do
 		echo "Attempting to install OpenVPN (attempt $attempt of $max_attempts)..."
-		ENV_VARS="IPV6_SUPPORT=y PORT_CHOICE=1 PROTOCOL_CHOICE=1 DNS=11 COMPRESSION_ENABLED=n CUSTOMIZE_ENC=n APPROVE_IP=y PASS=1 CLIENT=$profile_name MENU_OPTION=1"
+		ENV_VARS="IPV6_SUPPORT=n PORT_CHOICE=1 PROTOCOL_CHOICE=1 DNS=cloudflare COMPRESSION_ENABLED=n CUSTOMIZE_ENC=n APPROVE_IP=y PASS=1 CLIENT=$profile_name MENU_OPTION=1"
 		ssh $ssh_options root@"$droplet_ip" <<EOF
             # Download the OpenVPN installation script
             curl -sL "$install_script" -o /root/openvpn-install.sh
@@ -189,7 +189,7 @@ function create_droplet() {
             # How can I wait until package-manager lock is 
 
             export $ENV_VARS
-            /root/openvpn-install.sh
+            /root/openvpn-install.sh install
 EOF
 
 		if [[ $? -eq 0 ]]; then
@@ -246,7 +246,7 @@ function create_vpn_user() {
         # Set environment variables and execute the script
         export $ENV_VARS
         export PATH=$PATH:/usr/sbin/openvpn
-        /root/openvpn-install.sh
+        /root/openvpn-install.sh install
 EOF
 
 	if [[ $? -ne 0 ]]; then
