@@ -3,6 +3,8 @@ cask_args appdir: "/Applications"
 # Tap Homebrew
 tap "buildpacks/tap"
 tap "env0/terratag"
+tap "fluxcd/tap"
+tap "grafana/grafana"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "homebrew/services"
@@ -468,8 +470,15 @@ cask "tunnelblick"
 # Native desktop client for WhatsApp
 # Network protocol analyzer
 cask "wireshark-app", args: { appdir: "/Applications" }
-# Free and open source web app scanner
-# Video communication and virtual meeting platform
+cask "zen"
+cask "zoom", args: { appdir: "/Applications" }
+mas "Bitwarden", id: 1352778147
+mas "GarageBand", id: 682658836
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Telegram", id: 747648890
 vscode "amazonwebservices.codewhisperer-for-command-line-companion"
 vscode "apertia.vscode-aider"
 vscode "benjaminbenais.copilot-theme"
@@ -498,12 +507,7 @@ vscode "mechatroner.rainbow-csv"
 vscode "mkhl.shfmt"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
-vscode "ms-dotnettools.vscode-dotnet-runtime"
 vscode "ms-kubernetes-tools.vscode-kubernetes-tools"
-vscode "ms-mssql.data-workspace-vscode"
-vscode "ms-mssql.mssql"
-vscode "ms-mssql.sql-bindings-vscode"
-vscode "ms-mssql.sql-database-projects-vscode"
 vscode "ms-python.black-formatter"
 vscode "ms-python.debugpy"
 vscode "ms-python.isort"
@@ -518,25 +522,10 @@ vscode "ms-toolsai.vscode-jupyter-slideshow"
 vscode "ms-vscode-remote.remote-containers"
 vscode "ms-vscode-remote.remote-ssh"
 vscode "ms-vscode-remote.remote-ssh-edit"
-vscode "ms-vscode.cmake-tools"
-vscode "ms-vscode.cpp-devtools"
-vscode "ms-vscode.remote-explorer"
 vscode "ms-vsliveshare.vsliveshare"
 vscode "oderwat.indent-rainbow"
-vscode "redhat.ansible"
-vscode "redhat.java"
-vscode "redhat.vscode-xml"
-vscode "redhat.vscode-yaml"
 vscode "rust-lang.rust-analyzer"
 vscode "teabyii.ayu"
-vscode "tim-koehler.helm-intellisense"
-vscode "tonybaloney.vscode-pets"
-vscode "visualstudioexptteam.intellicode-api-usage-examples"
-vscode "visualstudioexptteam.vscodeintellicode"
-vscode "vscjava.vscode-gradle"
-vscode "vscjava.vscode-java-debug"
-vscode "vscjava.vscode-java-dependency"
-vscode "vscjava.vscode-java-pack"
-vscode "vscjava.vscode-java-test"
-vscode "vscjava.vscode-maven"
 vscode "withfig.fig"
+vscode "tonybaloney.vscode-pets"
+vscode "visualstudioexptteam.vscodeintellicode"
