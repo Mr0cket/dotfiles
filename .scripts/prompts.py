@@ -61,6 +61,13 @@ command_templates = {
             "content": "{msg}",
         },
     ),
+    "rewordCommit": Command(
+        system='Rewrite the following message into a professionalised commit message',
+        message={
+            "role": "user",
+            "content": "{msg}",
+        },
+    ),
     "rewordBrit": Command(
         system='Reword the message to be more in line with the tone of a proper British gentleman from the 1950s (for example, Winston Churchill), keeping language understandable by modern audiences',
         message={
@@ -91,7 +98,8 @@ command_templates = {
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('-m', '--model', type=str, default='gemini/gemini-2.5-flash-lite')
+parser.add_argument('-m', '--model', type=str, default='anthropic/claude-sonnet-4-6')
+# parser.add_argument('-m', '--model', type=str, default='gemini/gemini-2.5-flash-lite')
 parser.add_argument('--sync', action='store_true', help='Synchronise the executable commands')
 parser.add_argument('-r', '--reset', action='store_true', help='Reset')
 parser.add_argument('-t', '--temperature', type=float, default=0.5)

@@ -8,9 +8,8 @@ alias v='vim'
 alias file_size='wc -c'
 alias dir_size='du -hs'
 alias jcurl='curl -H "Content-type: application/json"'
-alias base64d='echo "$1" | base64 -d'
+alias base64d='() {echo "$1" | base64 -d}'
 alias mcd='if [[ ! -d "$1" ]]; then exec mkdir -p "$1"; fi; echo "$1"'
-alias vpnm='vpn_manager'
 
 # SHA private key fingerprint
 alias fingerprint='ssh-keygen -lf'
@@ -24,6 +23,8 @@ alias git_prune="git fetch --prune && git branch -vv | grep 'origin/.*: gone]' |
 ## "Oops, I made a typo"
 alias gcap="git commit --amend --no-edit && git push -f"
 alias ghpr='gh pr create -B main -t $(git branch --show-current)'
+alias yolo="git add . && git commit --amend --no-edit && git push -f"
+
 
 alias gcom='git commit -m'
 
